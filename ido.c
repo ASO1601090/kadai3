@@ -9,7 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#include "ido.h"
+
 
 float input( void );
 void output( float x, float y);
@@ -29,23 +29,22 @@ void main(void)
     double ac;            /* 逆三角関数(逆余弦) */
     double c;             /* 三角関数(余弦) */
     double s;             /* 三角関数(正弦) */
-    double kakudo;        /* 角度 */
+    double angle;         /* 角度 */
     double sum = 0;       /* 角度合計 */
     double teata;         /* 最終角度 */
     float x ,y;           /* 求める地点 */
-    float gyou;           /* 行数 */
+    float verse;          /* 行数 */
     int i;                /* カウント用変数 */
-    int syogen;           /* 象限用変数 */
 
-    gyou = input();       /* 行数入力 */
+    verse = input();      /* 行数入力 */
 
-    for(i=2;i<=gyou;i++){                           /* ２行目から１行分ずつ角度を足し込む */
+    for(i=2;i<=verse;i++){                          /* ２行目から１行分ずつ角度を足し込む */
 
         root = sqrt(i);                             /* 行番号の平方根を求める(斜辺の長さになる) */
         ac = acos(1/root);                          /* 斜辺と底辺を使って逆余弦を計算(角度の計算) */
-        kakudo = 180 - (90 + ac * 180 / M_PI);      /* ラジアンを「度」に変換し、求めたい角度を算出 */
+        angle = 180 - (90 + ac * 180 / M_PI);       /* ラジアンを「度」に変換し、求めたい角度を算出 */
 
-        sum = sum + kakudo;                         /* 角度合計用の変数に足しこむ */
+        sum = sum + angle;                          /* 角度合計用の変数に足しこむ */
 
     }
 
@@ -84,7 +83,7 @@ float input(void)
   /* 文字を入力 */
     char work[5];                                                   /* 入力値格納用変数 */
     int flg = 0;                                                    /* ループ用変数 */
-    float gyou;                                                     /* 変換数値格納用変数 */
+    float verse;                                                    /* 変換数値格納用変数 */
 
     while( flg == 0 ) {
 
@@ -101,15 +100,15 @@ float input(void)
             printf( "\n数値以外が入力されました\n" );
             flg = 0;
         }
-        gyou = atoi(work);
+        verse = atoi(work);
 
-        if(gyou == 1){
+        if(verse == 1){
             flg = 0;                                                /* 2以上なのでループ継続 */
         }
 
     }
 
-    return gyou;
+    return verse;
 }
 
 /************************************************/
